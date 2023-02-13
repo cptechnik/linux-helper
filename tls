@@ -1,0 +1,3 @@
+#!/bin/bash
+trash-list|sort|tail
+exit 1
