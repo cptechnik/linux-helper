@@ -1,8 +1,32 @@
 #! /bin/bash                                                                                                                             
-echo "ssh $1 uci set gluon-node-info.@location[0].share_location=0"                                                                      
+step=1                                                                                                                                   
+count=70                                                                                                                                 
+                                                                                                                                         
+echo -e "\nremoving $1 from map and halt\n"                                                                                              
+                                                                                                                                         
+if [[ $1 ]];                                                                                                                             
+then echo -e "\nssh $1 uci set gluon-node-info.@location[0].share_location=0 \n ";.                                                      
+else echo "no hostname";.                                                                                                                
+exit 1;.                                                                                                                                 
+fi                                                                                                                                       
+                                                                                                                                         
 ssh $1 uci set gluon-node-info.@location[0].share_location=0                                                                             
-echo "sleep 120"                                                                                                                         
-sleep 120                                                                                                                                
-echo "ssh $1 reboot"                                                                                                                     
-ssh $1 halt                                                                                                                              
-exit 0
+                                                                                                                                         
+if [[ $# -gt 1 ]];                                                                                                                       
+then echo "errorcode: $#";                                                                                                               
+exit 1;                                                                                                                                  
+fi                                                                                                                                       
+echo "errorcode: $#";                                                                                                                    
+                                                                                                                                         
+echo "waiting $count seconds"                                                                                                            
+while [[ $count -gt 0 ]];                                                                                                                
+do                                                                                                                                       
+    count=$(($count-$step))                                                                                                              
+    echo -ne "still $count seconds  \r"                                                                                                  
+    sleep $step                                                                                                                          
+done                                                                                                                                     
+echo " "                                                                                                                                 
+echo "ssh $1 halt"                                                                                                                       
+#ssh $1 halt                                                                                                                             
+exit 0                                                                                                                                   
+                                
