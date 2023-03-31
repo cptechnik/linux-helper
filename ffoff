@@ -1,0 +1,8 @@
+#! /bin/bash                                                                                                                             
+echo "ssh $1 uci set gluon-node-info.@location[0].share_location=0"                                                                      
+ssh $1 uci set gluon-node-info.@location[0].share_location=0                                                                             
+echo "sleep 120"                                                                                                                         
+sleep 120                                                                                                                                
+echo "ssh $1 reboot"                                                                                                                     
+ssh $1 halt                                                                                                                              
+exit 0
