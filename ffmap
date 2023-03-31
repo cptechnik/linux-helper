@@ -1,0 +1,15 @@
+#! /bin/bash                                                                                                                      
+step=1                                                                                                                                   
+count=70           
+
+if [[ $2=1 || $2=0 ]];
+then
+ssh $1 uci set gluon-node-info.@location[0].share_location=$2
+fi
+while [[ $count -gt 0 ]];                                                                                                                
+do                                                                                                                                       
+    count=$(($count-$step))                                                                                                              
+    echo -ne "still $count seconds  \r"                                                                                                  
+    sleep $step              
+done
+exit 0
