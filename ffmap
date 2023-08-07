@@ -2,14 +2,26 @@
 step=1                                                                                                                                   
 count=70           
 
+# if [[ "$2"="status"]]
+# then
+echo old:
+ssh $1 uci show gluon-node-info.@location[0].share_location
+# echo -n "uci show gluon-node-info.@location[0].share_location="
+# exit 0
+# fi
+
+
 if [[ $2=1 || $2=0 ]];
 then
+echo uci set...
 ssh $1 uci set gluon-node-info.@location[0].share_location=$2
 fi
+echo new:
+ssh $1 uci show gluon-node-info.@location[0].share_location
+
 while [[ $count -gt 0 ]];                                                                                                                
 do                                                                                                                                       
     count=$(($count-$step))                                                                                                              
     echo -ne "still $count seconds  \r"                                                                                                  
-    sleep $step              
-done
-exit 0
+    sleep $step                                                                                                                          
+done         
