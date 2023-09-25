@@ -1,0 +1,1 @@
+iw client0 scan | grep 'BSS\|SSID\|primary channel\|signal\|channel width'
