@@ -23,6 +23,10 @@ Linux helper are small scripts, wrapper for linux.
   * mate-about -v
   * echo "--------------------------------"
   * printenv | grep XDG_CURRENT
-  * echo "--------------------------------"
-
+  * echo "--------------------------------"tmux new-window "cd $(pwd); bash"
+* ct - change dir to tmux - tmux nachträglich starten - start tmux in this dir
+  *  abbr in fish:
+    *  abbr ct 'tmux new-window "cd (pwd); fish"'
+  *  bash:
+    *  alias ct='tmux new-window "cd $(pwd); bash"'
 
