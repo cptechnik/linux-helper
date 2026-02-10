@@ -11,3 +11,6 @@
 ## bakup parition
 * sudo dd if=/dev/sda2 of=/media/peter/sda5/sda2.img status=progress
 * sudo dd if=/dev/sda2 status=progress | gzip >/media/peter/sda5/sda2.img.gz
+## make links into directory for sorting by date and name
+* bash
+* `rm links/*.*;mkdir -p links && for file in *; do [ -f "$file" ] && ln -s "$PWD/$file" "links/$file"; done`
