@@ -1,0 +1,5 @@
+#!/bin/bash                                                                                         
+# making md5sum files - standard and with hash in name
+md5sum $1>$1.md5sum                                                                                 
+inhalt=$(cat $1.md5sum | cut -c 1-32)                                                               
+cp $1.md5sum $1--"$inhalt".md5sum 
